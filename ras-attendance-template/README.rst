@@ -11,6 +11,7 @@ Credits
 Authors
 ~~~~~~~
 
+* Creu Blanca
 * thingsintouch.com
 
 Maintainers

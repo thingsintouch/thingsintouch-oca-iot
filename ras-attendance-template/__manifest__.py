@@ -7,7 +7,7 @@
     "category": "IoT",
     "author": "Creu Blanca , "
             "thingsintouch.com",
-    "website": "https://github.com/thingsintouch/ras-template",
+    "website": "https://github.com/thingsintouch/thingsintouch-oca-iot/tree/13.0/ras-attendance-template",
     "license": "AGPL-3",
     "installable": True,
     "summary": "Template to define new RAS Devices for OCA-IoT Modules",

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<odoo>
+<odoo noupdate="1">
     <record id="ras_property_device_name" model="iot.device.property">
         <field name="name">Device Name on Display</field>
         <field name="tech_name">RASxxx</field>

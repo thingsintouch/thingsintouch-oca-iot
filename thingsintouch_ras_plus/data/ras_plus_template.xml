@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo noupdate="1">
+    <record id="ras_property_period_get_iot_keys" model="iot.device.property">
+        <field name="name">Period between IoT Keys Transfer [s]</field>
+        <field name="tech_name">period_odoo_get_iot_keys</field>
+        <field name="widget">integer</field>
+        <field name="default_value">30</field>
+    </record>
+    <!--TODO: Pass all parameters in a similar way-->
+    <record id="ras_plus_template" model="iot.template">
+        <field name="name">thingsintouch.ras_plus</field>
+        <field name="property_ids" eval="[
+            (4, ref('thingsintouch_ras_attendance.ras_property_device_name')),
+            (4, ref('thingsintouch_ras_attendance.ras_property_card_registered')),
+            (4, ref('thingsintouch_ras_attendance.ras_property_too_soon')),
+            (4, ref('thingsintouch_ras_attendance.ras_property_tz')),
+            (4, ref('thingsintouch_ras_attendance.ras_property_time_format')),
+            (4, ref('thingsintouch_ras_attendance.ras_property_setup_password')),
+            (4, ref('thingsintouch_ras_attendance.ras_property_time_format')),
+            (4, ref('thingsintouch_ras_attendance.ras_property_min_time')),
+            (4, ref('thingsintouch_ras_attendance.ras_property_period_routine')),
+            (4, ref('thingsintouch_ras_attendance.ras_property_period_clockings')),
+            (4, ref('thingsintouch_ras_plus.ras_property_period_get_iot_keys')),
+            (4, ref('thingsintouch_ras_attendance.ras_property_time_after_clocking')),
+            (4, ref('thingsintouch_ras_attendance.ras_property_update')),
+            (4, ref('thingsintouch_ras_attendance.ras_property_shutdown')),
+            (4, ref('thingsintouch_ras_attendance.ras_property_reboot')),
+            (4, ref('thingsintouch_ras_attendance.ras_property_partial_reset')),
+            (4, ref('thingsintouch_ras_attendance.ras_property_full_reset')),
+            ]"/>
+    </record>
+    <record id="ras_template_input_sync" model="iot.template.input">
+        <field name="template_id" ref="ras_plus_template"/>
+        <field name="name">sync_clocking</field>
+        <field name="call_model_id" ref="hr.model_hr_employee"/>
+        <field name="call_function">register_attendance</field>
+        <field name="params">{}</field>
+    </record>
+    <record id="ras_template_input_async" model="iot.template.input">
+        <field name="template_id" ref="ras_plus_template"/>
+        <field name="name">async_clocking</field>
+        <field name="call_model_id" ref="hr.model_hr_employee"/>
+        <field name="call_function">register_attendance_async</field>
+        <field name="params">{}</field>
+    </record>
+    <record id="ras_template_input_options" model="iot.template.input">
+        <field name="template_id" ref="ras_plus_template"/>
+        <field name="name">get_options</field>
+        <field name="call_function">get_options</field>
+        <field name="params">{}</field>
+    </record>
+
+    <record id="ras_plus_template_lock_1" model="iot.template.key">
+        <field name="template_id" ref="ras_plus_template" />
+        <field name="key">lock_id_1</field>
+    </record>
+
+    <record id="ras_template_input_call_lock_sync" model="iot.template.input">
+        <field name="template_id" ref="ras_plus_template"/>
+        <field name="name">call_lock_sync</field>
+        <field name="call_function">call_lock</field>
+        <field name="params">{}</field>
+    </record>
+
+    <record id="ras_template_input_get_iot_keys" model="iot.template.input">
+        <field name="template_id" ref="ras_plus_template"/>
+        <field name="name">get_iot_keys</field>
+        <field name="call_model_id" ref="iot_oca.model_iot_device"/>
+        <field name="call_function">get_iot_keys</field>
+        <field name="params">{}</field>
+    </record>
+
+    <record id="ras_template_input_call_lock_async" model="iot.template.input">
+        <field name="template_id" ref="ras_plus_template"/>
+        <field name="name">call_lock_async</field>
+        <field name="call_function">call_lock_async</field>
+        <field
+            name="params"
+        >{'lock_id': '${lock_id_1}' }</field>
+    </record>
+</odoo>

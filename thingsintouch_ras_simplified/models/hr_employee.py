@@ -1,4 +1,4 @@
-# Copyright 2021 thingsintouch.com
+# Copyright 2022 thingsintouch.com
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
 from odoo import api, models

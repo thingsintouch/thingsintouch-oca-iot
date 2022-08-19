@@ -11,6 +11,6 @@
     "license": "AGPL-3",
     "installable": True,
     "summary": "Template and Functionality to define new RAS Devices for OCA-IoT Modules",
-    "depends": ["thingsintouch_ras_simplified", "hr_attendance_rfid", "iot_option_oca"],
+    "depends": ["thingsintouch_ras_simplified", "iot_option_oca"],
     "data": ["data/ras_template.xml"],
 }
